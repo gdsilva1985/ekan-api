@@ -16,9 +16,7 @@ Antes de baixar o projeto serão nescessários as seguintes ferramentas instalad
 
 
 ### Instalação do projeto
-- para build da api:
-  `mvn clean package`
-- para executar a api:
+- para executar a api, executar o seguinte comando:
 `mvn spring-boot:run`
 
 ## Documentação: Swagger
