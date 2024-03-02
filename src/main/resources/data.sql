@@ -1,0 +1,3 @@
+insert into beneficiario (nome,telefone,data_nascimento,data_inclusao,data_atualizacao) values('Gilson', '5511998452356','1985-02-10',now(),now());
+insert into documento(beneficiario_id,tipo_documento,descricao,data_atualizacao,data_inclusao)  values(1,'CPF','Descrição do documento',now(),now());
+insert into usuario(login,senha) values('usuario','$2a$12$6fCbw68Ac6yVUD/9ZQQSSeN65WaHwIjFlsCxVExVEA1aAKWuTcgW2');
