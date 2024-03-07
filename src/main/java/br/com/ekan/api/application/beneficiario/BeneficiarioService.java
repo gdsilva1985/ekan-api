@@ -6,6 +6,8 @@ import br.com.ekan.api.domain.beneficiario.Documento;
 import br.com.ekan.api.infrastructure.exception.NotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -25,8 +27,8 @@ public class BeneficiarioService {
         return repository.saveAndFlush(beneficiario);
     }
 
-    public List<Beneficiario> lista() {
-        return repository.findAll();
+    public Page<Beneficiario> lista(Pageable paginacao) {
+        return repository.findAll(paginacao);
     }
 
     @Transactional

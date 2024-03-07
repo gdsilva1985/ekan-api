@@ -7,6 +7,9 @@ import br.com.ekan.api.infrastructure.exception.NotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -20,8 +23,8 @@ public class BeneficiarioController {
     private BeneficiarioService service;
 
     @GetMapping
-    public ResponseEntity<?> lista() {
-        return ResponseEntity.ok(service.lista());
+    public ResponseEntity<Page<Beneficiario>> lista(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+        return ResponseEntity.ok(service.lista(paginacao));
     }
 
     @PostMapping
@@ -39,6 +42,7 @@ public class BeneficiarioController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<?> remove(@PathVariable Long id) throws Exception {
         service.remove(id);
         return ResponseEntity.noContent().build();
